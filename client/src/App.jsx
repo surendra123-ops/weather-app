@@ -1,19 +1,24 @@
-import { useEffect, useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import History from './pages/History';
+import WeatherDetails from './pages/WeatherDetails';
+import About from './pages/About';
 
-function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:5000') // backend route
-      .then(res => res.text())
-      .then(setMessage);
-  }, []);
-
+export default function App() {
   return (
-    <div className="p-4 text-xl font-bold text-blue-600">
-      {message || "Loading..."}
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      <nav className="bg-blue-600 text-white p-4 flex justify-around">
+        <Link to="/">Home</Link>
+        <Link to="/history">Search History</Link>
+        <Link to="/about">About</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/weather/:city" element={<WeatherDetails />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;
