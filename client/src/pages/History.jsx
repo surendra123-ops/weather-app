@@ -2,11 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 export default function History() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['history'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:5000/api/history');
+      const res = await axios.get(`${backendURL}/api/history`);
       return res.data;
     }
   });
@@ -27,7 +29,7 @@ export default function History() {
               <Link
                 to={`/weather/${search.city}`}
                 className="text-blue-700 text-xl font-semibold hover:underline truncate max-w-xs sm:max-w-sm"
-                title={search.city}  // tooltip for long city names
+                title={search.city}
               >
                 {search.city}
               </Link>

@@ -2,13 +2,15 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 export default function WeatherDetails() {
   const { city } = useParams();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['weather', city],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/api/weather?city=${city}`);
+      const res = await axios.get(`${backendURL}/api/weather?city=${city}`);
       return res.data;
     }
   });

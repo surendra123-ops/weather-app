@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 export default function Home() {
   const [locationWeather, setLocationWeather] = useState(null);
   const [forecast, setForecast] = useState([]);
@@ -15,10 +17,10 @@ export default function Home() {
       async (position) => {
         const { latitude, longitude } = position.coords;
         try {
-          const res = await axios.get(`/api/weather/current?lat=${latitude}&lon=${longitude}`);
+          const res = await axios.get(`${backendURL}/api/weather/current?lat=${latitude}&lon=${longitude}`);
           setLocationWeather(res.data);
 
-          const forecastRes = await axios.get(`/api/weather/forecast?lat=${latitude}&lon=${longitude}`);
+          const forecastRes = await axios.get(`${backendURL}/api/weather/forecast?lat=${latitude}&lon=${longitude}`);
           setForecast(forecastRes.data.list.slice(0, 5));
         } catch (err) {
           setError('Unable to fetch weather');
@@ -34,7 +36,7 @@ export default function Home() {
     initialValues: { city: '' },
     onSubmit: async (values) => {
       try {
-        await axios.post('/api/history', { city: values.city });
+        await axios.post(`${backendURL}/api/history`, { city: values.city });
       } catch (err) {
         console.error('Failed to save history', err);
       }
