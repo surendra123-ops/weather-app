@@ -37,23 +37,29 @@ The app is deployed on Render:
 
 1. Clone the Repository
 git clone https://github.com/surendra123-ops/weather-app.git
+
 cd weather-app
 
-2. Set Up the Backend
+3. Set Up the Backend
+
 cd server
+
 npm install
 
 Create a .env file in the server/ directory with the following:
-PORT=5000
+
 WEATHER_API_KEY=your_openweathermap_api_key
 
 Start the backend server:
+
 npm start
 
 
 
 3. Set Up the Frontend
+
 cd ../client
+
 npm install
 
 Create a .env.local file in the client/ directory with:
