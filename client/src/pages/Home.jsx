@@ -2,17 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Tooltip
-} from 'chart.js';
-
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip);
 
 export default function Home() {
   const [locationWeather, setLocationWeather] = useState(null);
@@ -22,18 +11,23 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const { latitude, longitude } = position.coords;
-      try {
-        const res = await axios.get(`/api/weather/current?lat=${latitude}&lon=${longitude}`);
-        setLocationWeather(res.data);
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const res = await axios.get(`/api/weather/current?lat=${latitude}&lon=${longitude}`);
+          setLocationWeather(res.data);
 
-        const forecastRes = await axios.get(`/api/weather/forecast?lat=${latitude}&lon=${longitude}`);
-        setForecast(forecastRes.data.list.slice(0, 5));
-      } catch (err) {
-        setError('Unable to fetch weather');
+          const forecastRes = await axios.get(`/api/weather/forecast?lat=${latitude}&lon=${longitude}`);
+          setForecast(forecastRes.data.list.slice(0, 5));
+        } catch (err) {
+          setError('Unable to fetch weather');
+        }
+      },
+      (error) => {
+        setError('Unable to get your location');
       }
-    });
+    );
   }, []);
 
   const formik = useFormik({

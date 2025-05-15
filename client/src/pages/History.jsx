@@ -21,27 +21,26 @@ export default function History() {
         <ul className="space-y-4">
           {data.map((search) => (
             <li
-  key={search._id}
-  className="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 hover:bg-blue-100 hover:text-blue-900 border border-gray-300 rounded-xl px-6 py-4 shadow-sm transition-colors duration-300 ease-in-out"
->
-  <Link
-    to={`/weather/${search.city}`}
-    className="text-blue-700 text-xl font-semibold hover:underline truncate max-w-xs sm:max-w-sm"
-    title={search.city}  // tooltip for long city names
-  >
-    {search.city}
-  </Link>
-  <span className="text-sm sm:text-base font-medium text-gray-600 mt-2 sm:mt-0 whitespace-nowrap">
-    {new Date(search.searchedAt).toLocaleString(undefined, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    })}
-  </span>
-</li>
-
+              key={search._id}
+              className="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 hover:bg-blue-100 hover:text-blue-900 border border-gray-300 rounded-xl px-6 py-4 shadow-sm transition-colors duration-300 ease-in-out"
+            >
+              <Link
+                to={`/weather/${search.city}`}
+                className="text-blue-700 text-xl font-semibold hover:underline truncate max-w-xs sm:max-w-sm"
+                title={search.city}  // tooltip for long city names
+              >
+                {search.city}
+              </Link>
+              <span className="text-sm sm:text-base font-medium text-gray-600 mt-2 sm:mt-0 whitespace-nowrap">
+                {new Date(search.searchedAt).toLocaleString(undefined, {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </span>
+            </li>
           ))}
         </ul>
       </div>
