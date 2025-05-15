@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 export default function History() {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['searches'],
+    queryKey: ['history'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:5000/api/searches');
+      const res = await axios.get('http://localhost:5000/api/history');
       return res.data;
     }
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p className="p-6 text-red-600">Error fetching searches</p>;
+  if (error) return <p className="p-6 text-red-600">Error fetching history</p>;
 
   return (
     <div className="p-6">

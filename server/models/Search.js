@@ -1,4 +1,3 @@
-// models/search.js
 const mongoose = require('mongoose');
 
 const searchSchema = new mongoose.Schema({

@@ -1,4 +1,3 @@
-// controllers/historyController.js
 const Search = require('../models/Search');
 
 exports.getSearchHistory = async (req, res) => {
