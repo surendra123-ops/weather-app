@@ -18,7 +18,7 @@ Website: https://openweathermap.org/api
 🛠️ Tech Stack
 
 📦 Frontend:
-- React.js – React-based framework with server-side rendering (Next.js)
+- React.js – React-based framework with server-side rendering (Reactjs)
 - Tailwind CSS – Utility-first CSS framework for rapid UI development
 - React Query – For efficient data fetching and caching
 - Formik – For form state management and validation
@@ -30,7 +30,7 @@ Website: https://openweathermap.org/api
 🚀 Deployment
 The app is deployed on Render:
 
-- 🔗 Frontend (Next.js): https://weather-app-1-aiau.onrender.com
+- 🔗 Frontend (React js): https://weather-app-1-aiau.onrender.com/
 - 🔗 Backend (Express.js API): https://weather-app-klud.onrender.com
 
 💻 Instructions to Run Locally
@@ -50,7 +50,7 @@ WEATHER_API_KEY=your_openweathermap_api_key
 Start the backend server:
 npm start
 
-The backend runs at: http://localhost:5000
+
 
 3. Set Up the Frontend
 cd ../client
@@ -62,7 +62,6 @@ Create a .env.local file in the client/ directory with:
 Start the frontend server:
 npm run dev
 
-The frontend runs at: http://localhost:3000
 
 📁 Project Structure
 
