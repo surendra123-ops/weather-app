@@ -25,6 +25,16 @@ export default function About() {
           <p className="text-lg text-gray-600">
             🎨 Frontend uses React, React Query, Tailwind CSS, and Formik.
           </p>
+          {/* Added additional info below */}
+          <p className="text-lg text-gray-900">
+            📡 The weather data is fetched by sending API requests to OpenWeatherMap's REST endpoints, which provide real-time weather information including temperature, humidity, wind speed, and weather conditions.
+          </p>
+          <p className="text-lg text-gray-900">
+            🔧 The app handles fetching asynchronously, processes the JSON responses, and updates the UI dynamically based on user location or searched cities.
+          </p>
+          <p className="text-lg text-gray-900">
+            🌍 APIs used ensure accurate global weather data coverage with updates every few minutes.
+          </p>
         </div>
       </div>
     </div>
